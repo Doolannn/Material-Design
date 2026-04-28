@@ -1,0 +1,102 @@
+---
+name: Component Library
+title: Component Library
+order: 3
+hasToc: false
+layout: false
+---
+{% extends 'default.html' %}
+
+{% block head %}
+  <script type="module" src="/js/pages/component-library.js"></script>
+  <link rel="stylesheet" href="/css/component-library.css">
+{% endblock %}
+
+{% block content %}
+{% set components = collections.component | filtersort('data.name') %}
+<section class="library-hero">
+  <div class="library-hero__copy">
+    <p class="library-kicker">Repo-backed inventory</p>
+    <h1>One component library, generated from the GitHub source of truth.</h1>
+    <p class="library-lede">
+      This page is designed to support your GitHub-to-Figma workflow. Every card
+      below is generated from the repository’s own component docs collection and
+      points to the live story, canonical docs page, and source folder.
+    </p>
+    <div class="library-hero__actions">
+      <md-filled-button href="/components/">Browse docs</md-filled-button>
+      <md-outlined-button href="/theming/">Review tokens</md-outlined-button>
+    </div>
+  </div>
+
+  <div class="library-hero__meta">
+    <div class="meta-card">
+      <span class="meta-card__value">{{ components | length }}</span>
+      <span class="meta-card__label">repo-defined components</span>
+    </div>
+    <div class="meta-card">
+      <span class="meta-card__value">Live</span>
+      <span class="meta-card__label">storybook-style previews</span>
+    </div>
+    <div class="meta-card">
+      <span class="meta-card__value">Single source</span>
+      <span class="meta-card__label">docs, stories, and source stay aligned</span>
+    </div>
+  </div>
+</section>
+
+<section class="workflow-band">
+  <div class="workflow-card">
+    <p class="library-section-label">Suggested workflow</p>
+    <ol class="workflow-list">
+      <li>Review live components here from the GitHub repo, without duplicating inventory.</li>
+      <li>Connect your Figma library to these same components through Code Connect.</li>
+      <li>Push design-driven changes back into the repo while keeping GitHub as the implementation source of truth.</li>
+    </ol>
+  </div>
+
+  <label class="library-search">
+    <span class="library-section-label">Search components</span>
+    <input
+      id="component-library-search"
+      type="search"
+      placeholder="Filter by component name or folder..."
+      autocomplete="off">
+  </label>
+</section>
+
+<section class="library-grid" aria-label="Component library">
+  {% for component in components %}
+    <article
+      class="library-card"
+      data-component-card
+      data-component-name="{{ component.data.name | lower }}"
+      data-component-dir="{{ component.data.dirname | lower }}">
+      <div class="library-card__header">
+        <div>
+          <p class="library-card__eyebrow">{{ component.data.dirname }}</p>
+          <h2>{{ component.data.name }}</h2>
+        </div>
+        <div class="library-card__actions">
+          <md-outlined-button href="{{ component.url }}">Docs</md-outlined-button>
+          <md-filled-button href="{{ component.url }}stories/">Live story</md-filled-button>
+        </div>
+      </div>
+
+      <p class="library-card__copy">
+        Canonical repo folder:
+        <a href="https://github.com/material-components/material-web/tree/main/{{ component.data.dirname }}" target="_blank">
+          {{ component.data.dirname }}/
+        </a>
+      </p>
+
+      <div class="library-card__preview">
+        <iframe
+          title="{{ component.data.name }} live preview"
+          src="{{ component.url }}stories/"
+          loading="lazy"></iframe>
+      </div>
+    </article>
+  {% endfor %}
+</section>
+{% endblock %}

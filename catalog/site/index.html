@@ -6,20 +6,202 @@
 {% endblock %}
 
 {% block content %}
+<section class="hero reveal">
+  <div class="hero-copy">
+    <p class="eyebrow">Design System Foundation</p>
+    <h1>Material Web, shaped into a living design system.</h1>
+    <p class="lede">
+      This catalog now works as a front door for the repo: themeable foundations,
+      production-ready web components, and clear starting points for building
+      polished product UI.
+    </p>
 
-<h1>Material Web</h1>
-<div class="subtitle">
-  <p>
-    <code>@material/web</code> is a library of
-    <a href="https://developer.mozilla.org/en-US/docs/Web/Web_Components" target="_blank">web components</a>
-    that helps build beautiful and accessible web applications.
-  </p>
+    <div class="hero-actions">
+      <md-filled-button href="/components/button/">
+        Browse components
+      </md-filled-button>
+      <md-outlined-button href="/theming/">
+        Explore theming
+      </md-outlined-button>
+    </div>
 
-  <p>
-    <a href="https://github.com/material-components/material-web/discussions/5642" target="_blank">
-      <strong>Note: MWC is in maintenance mode pending new maintainers.</strong>
-    </a>
-  </p>
-</div>
+    <div class="hero-meta">
+      <div class="metric">
+        <span class="metric-value">30+</span>
+        <span class="metric-label">component primitives</span>
+      </div>
+      <div class="metric">
+        <span class="metric-value" data-theme-mode>Auto</span>
+        <span class="metric-label">active color mode</span>
+      </div>
+      <div class="metric">
+        <span class="metric-value" data-seed-color>#ECAA2E</span>
+        <span class="metric-label">seed color</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-preview surface-panel">
+    <div class="preview-shell">
+      <div class="preview-topline">
+        <span class="preview-kicker">System preview</span>
+        <span class="preview-badge">Live theme tokens</span>
+      </div>
+
+      <div class="preview-card">
+        <div class="preview-card-header">
+          <div>
+            <p class="preview-overline">Launch flow</p>
+            <h2>Design reviews stay close to code.</h2>
+          </div>
+          <md-switch selected aria-label="Enable launch readiness"></md-switch>
+        </div>
+
+        <p class="preview-body">
+          Use the same component primitives, type scale, and color system across
+          docs, demos, and product UI.
+        </p>
+
+        <div class="preview-chip-row">
+          <md-chip-set>
+            <md-assist-chip label="Accessible"></md-assist-chip>
+            <md-assist-chip label="Themeable"></md-assist-chip>
+            <md-assist-chip label="Composable"></md-assist-chip>
+          </md-chip-set>
+        </div>
+
+        <md-divider></md-divider>
+
+        <div class="preview-checklist">
+          <label class="checkline">
+            <md-checkbox checked></md-checkbox>
+            <span>Document foundations before extending components</span>
+          </label>
+          <label class="checkline">
+            <md-checkbox checked></md-checkbox>
+            <span>Build previews from repo-native web components</span>
+          </label>
+          <label class="checkline">
+            <md-checkbox></md-checkbox>
+            <span>Ship product-specific templates on top of the system</span>
+          </label>
+        </div>
+
+        <div class="preview-actions">
+          <md-filled-button>Publish update</md-filled-button>
+          <md-text-button href="/components/">See all components</md-text-button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-grid reveal">
+  <article class="surface-panel narrative-panel">
+    <p class="section-label">System principles</p>
+    <h2>Start from foundations, then assemble product language.</h2>
+    <p>
+      The strongest design systems are opinionated about rhythm, hierarchy, and
+      interaction, not just inventories of controls. This repo already carries
+      the implementation surface. The catalog now frames it as a system.
+    </p>
+
+    <div class="principle-grid">
+      <div class="principle-card">
+        <h3>Foundation-first</h3>
+        <p>Color, type, shape, and spacing drive consistency before screens do.</p>
+      </div>
+      <div class="principle-card">
+        <h3>Code-native</h3>
+        <p>Every preview is built from the same web components you ship.</p>
+      </div>
+      <div class="principle-card">
+        <h3>Theme-aware</h3>
+        <p>Seed colors and light or dark mode become system-level decisions.</p>
+      </div>
+    </div>
+  </article>
+
+  <article class="surface-panel token-panel">
+    <p class="section-label">Live token snapshot</p>
+    <h2>Core colors from the active theme.</h2>
+    <div class="token-grid">
+      <div class="token-card">
+        <div class="token-swatch token-primary"></div>
+        <div>
+          <p>Primary</p>
+          <code data-token-value="--md-sys-color-primary"></code>
+        </div>
+      </div>
+      <div class="token-card">
+        <div class="token-swatch token-secondary"></div>
+        <div>
+          <p>Secondary</p>
+          <code data-token-value="--md-sys-color-secondary"></code>
+        </div>
+      </div>
+      <div class="token-card">
+        <div class="token-swatch token-surface"></div>
+        <div>
+          <p>Surface</p>
+          <code data-token-value="--md-sys-color-surface"></code>
+        </div>
+      </div>
+      <div class="token-card">
+        <div class="token-swatch token-accent"></div>
+        <div>
+          <p>Tertiary</p>
+          <code data-token-value="--md-sys-color-tertiary"></code>
+        </div>
+      </div>
+    </div>
+  </article>
+</section>
+
+<section class="section-grid reveal">
+  <article class="surface-panel family-panel">
+    <p class="section-label">Component families</p>
+    <h2>Map the repo into the building blocks teams actually use.</h2>
+    <div class="family-grid">
+      <a class="family-card" href="/components/button/">
+        <span class="family-title">Actions</span>
+        <span class="family-body">Buttons, FABs, icon buttons, and chips for primary flows.</span>
+      </a>
+      <a class="family-card" href="/components/text-field/">
+        <span class="family-title">Inputs</span>
+        <span class="family-body">Fields, selects, checkboxes, radios, and switches for form systems.</span>
+      </a>
+      <a class="family-card" href="/components/tabs/">
+        <span class="family-title">Navigation</span>
+        <span class="family-body">Tabs, lists, menus, and navigation patterns that organize journeys.</span>
+      </a>
+      <a class="family-card" href="/components/dialog/">
+        <span class="family-title">Feedback</span>
+        <span class="family-body">Dialogs, progress, and supporting states that clarify status and next steps.</span>
+      </a>
+    </div>
+  </article>
+
+  <article class="surface-panel">
+    <p class="section-label">Theme studio</p>
+    <h2>Adjust the system in place.</h2>
+    <p class="section-copy">
+      Tune the seed color and mode, then carry those choices into component
+      exploration. The token snapshot above updates with the active theme.
+    </p>
+    <theme-changer></theme-changer>
+  </article>
+</section>
+
+<section class="cta-band reveal">
+  <div>
+    <p class="section-label">Build next</p>
+    <h2>Use the catalog as the system home, then layer product patterns on top.</h2>
+  </div>
+  <div class="cta-actions">
+    <md-filled-button href="/components/">Open component docs</md-filled-button>
+    <md-outlined-button href="/stories/">Open live stories</md-outlined-button>
+  </div>
+</section>
 
 {% endblock %}
