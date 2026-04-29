@@ -120,6 +120,12 @@ $_default: (
     )
   );
 
+  $tokens: map.set(
+    $tokens,
+    'container-shape',
+    if($exclude-hardcoded-values, null, 3px)
+  );
+
   @if not $exclude-custom-properties {
     @each $token, $value in $tokens {
       @if string.index($token, 'container-shape-') == 1 {

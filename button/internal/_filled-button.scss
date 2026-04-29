@@ -34,34 +34,34 @@
       --_#{$token}: #{$value};
     }
 
-    // Use the XS shape token by default while still allowing the
+    // Use 3px by default while still allowing the
     // component-level shape tokens to override individual corners.
     --_container-shape-start-start: var(
       --md-filled-button-container-shape-start-start,
       var(
         --md-filled-button-container-shape,
-        var(--md-sys-shape-corner-extra-small)
+        3px
       )
     );
     --_container-shape-start-end: var(
       --md-filled-button-container-shape-start-end,
       var(
         --md-filled-button-container-shape,
-        var(--md-sys-shape-corner-extra-small)
+        3px
       )
     );
     --_container-shape-end-end: var(
       --md-filled-button-container-shape-end-end,
       var(
         --md-filled-button-container-shape,
-        var(--md-sys-shape-corner-extra-small)
+        3px
       )
     );
     --_container-shape-end-start: var(
       --md-filled-button-container-shape-end-start,
       var(
         --md-filled-button-container-shape,
-        var(--md-sys-shape-corner-extra-small)
+        3px
       )
     );
   }
