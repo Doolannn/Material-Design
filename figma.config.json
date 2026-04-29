@@ -1,0 +1,16 @@
+{
+  "codeConnect": {
+    "parser": "html",
+    "include": ["codeConnect/**/*.figma.ts"],
+    "exclude": [
+      "node_modules/**",
+      "catalog/**",
+      "**/demo/**",
+      "scripts/**",
+      "labs/gb/**"
+    ],
+    "label": "Web Components",
+    "language": "html",
+    "defaultBranch": "main"
+  }
+}

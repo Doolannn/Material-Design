@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Repository Connection Mockup</title>
+    <link rel="stylesheet" href="./repo-connection-mockup.css">
+    <script type="module" src="./repo-connection-mockup.bundle.js"></script>
+  </head>
+  <body>
+    <main class="page-shell">
+      <section class="hero-band reveal">
+        <div class="hero-copy glass-panel">
+          <div class="hero-kicker-row">
+            <md-chip-set>
+              <md-assist-chip label="Standalone page"></md-assist-chip>
+              <md-assist-chip label="Repo components only"></md-assist-chip>
+              <md-assist-chip label="GitHub source of truth"></md-assist-chip>
+            </md-chip-set>
+          </div>
+
+          <p class="hero-eyebrow md-typescale-label-large">Connection Story</p>
+          <h1 class="md-typescale-display-medium">
+            How this GitHub repository was connected and made usable as the live source of truth.
+          </h1>
+
+          <p class="md-typescale-body-large hero-copy__lede">
+            This mockup explains the actual connection flow we used: attach the
+            local workspace to GitHub, switch to SSH, trust the host, reconcile
+            history, and push the result so the repository becomes the single
+            implementation source for downstream workflows like Figma Code Connect.
+          </p>
+
+          <div class="hero-actions">
+            <md-filled-button id="open-summary-dialog">
+              Open summary
+            </md-filled-button>
+            <md-outlined-button href="https://github.com/Doolannn/Material-Design" target="_blank">
+              View repository
+            </md-outlined-button>
+            <md-text-button href="./catalog/_dev/about/component-library/">
+              Open component library
+            </md-text-button>
+          </div>
+
+          <div class="hero-route">
+            <div class="route-node route-node--active">
+              <span class="route-label">Local repo</span>
+              <span class="route-body">Workspace initialized</span>
+            </div>
+            <div class="route-line"></div>
+            <div class="route-node route-node--active">
+              <span class="route-label">GitHub remote</span>
+              <span class="route-body">SSH authenticated</span>
+            </div>
+            <div class="route-line"></div>
+            <div class="route-node route-node--active">
+              <span class="route-label">Design system</span>
+              <span class="route-body">Live repo-backed pages</span>
+            </div>
+          </div>
+
+          <div class="hero-stats">
+            <md-elevated-card class="stat-card">
+              <span class="md-typescale-title-large">SSH</span>
+              <span class="md-typescale-body-medium">Remote switched from HTTPS to SSH for stable GitHub auth.</span>
+            </md-elevated-card>
+            <md-elevated-card class="stat-card">
+              <span class="md-typescale-title-large">Merged</span>
+              <span class="md-typescale-body-medium">Local history was merged with the existing remote `main` branch.</span>
+            </md-elevated-card>
+            <md-elevated-card class="stat-card">
+              <span class="md-typescale-title-large">Pushed</span>
+              <span class="md-typescale-body-medium">The repo-backed design pages were committed and published to GitHub.</span>
+            </md-elevated-card>
+          </div>
+        </div>
+
+        <md-outlined-card class="hero-panel reveal">
+          <div class="hero-panel__header">
+            <div>
+              <p class="md-typescale-label-large">Connection checklist</p>
+              <h2 class="md-typescale-headline-small">Repository status</h2>
+            </div>
+            <md-switch selected icons aria-label="Repository connected"></md-switch>
+          </div>
+
+          <div class="checklist">
+            <label class="checkline">
+              <md-checkbox checked></md-checkbox>
+              <span class="md-typescale-body-medium">Remote attached to `origin`</span>
+            </label>
+            <label class="checkline">
+              <md-checkbox checked></md-checkbox>
+              <span class="md-typescale-body-medium">SSH key created and added to GitHub</span>
+            </label>
+            <label class="checkline">
+              <md-checkbox checked></md-checkbox>
+              <span class="md-typescale-body-medium">GitHub host trusted on this machine</span>
+            </label>
+            <label class="checkline">
+              <md-checkbox checked></md-checkbox>
+              <span class="md-typescale-body-medium">Remote history fetched and merged</span>
+            </label>
+            <label class="checkline">
+              <md-checkbox checked></md-checkbox>
+              <span class="md-typescale-body-medium">Branch pushed back to `main`</span>
+            </label>
+          </div>
+
+          <md-divider></md-divider>
+
+          <div class="quick-controls">
+            <md-outlined-text-field
+              label="GitHub remote"
+              value="git@github.com:Doolannn/Material-Design.git"
+              readonly></md-outlined-text-field>
+
+            <md-slider
+              disabled
+              labeled
+              value="100"
+              value-label="Connection complete"></md-slider>
+
+            <md-linear-progress value="1"></md-linear-progress>
+          </div>
+
+          <div class="status-strip">
+            <md-suggestion-chip label="Remote attached"></md-suggestion-chip>
+            <md-suggestion-chip label="Host trusted"></md-suggestion-chip>
+            <md-suggestion-chip label="Main synced"></md-suggestion-chip>
+          </div>
+        </md-outlined-card>
+      </section>
+
+      <section class="story-band reveal">
+        <md-outlined-card class="story-card story-card--before">
+          <p class="md-typescale-label-large">Before</p>
+          <h2 class="md-typescale-headline-small">A local repo with no direct GitHub pathway.</h2>
+          <p class="md-typescale-body-medium">
+            The workspace existed, but there was no working remote, no stable
+            authentication path, and no live repo-backed review surface for
+            components.
+          </p>
+        </md-outlined-card>
+        <md-outlined-card class="story-card story-card--after">
+          <p class="md-typescale-label-large">After</p>
+          <h2 class="md-typescale-headline-small">A connected repository with publishable design-system surfaces.</h2>
+          <p class="md-typescale-body-medium">
+            GitHub became the source of truth, the remote was authenticated over
+            SSH, and the library pages now point at live repository output.
+          </p>
+        </md-outlined-card>
+      </section>
+
+      <section class="tab-strip reveal" role="tablist" aria-label="Repository connection sections">
+        <md-primary-tab id="overview-tab" active aria-controls="overview-panel">
+          Overview
+        </md-primary-tab>
+        <md-primary-tab id="steps-tab" aria-controls="steps-panel">
+          Steps
+        </md-primary-tab>
+        <md-primary-tab id="components-tab" aria-controls="components-panel">
+          Components used
+        </md-primary-tab>
+      </section>
+
+      <section id="overview-panel" class="content-panel reveal">
+        <div class="panel-grid">
+          <md-outlined-card class="panel-card panel-card--spotlight">
+            <h2 class="md-typescale-headline-small">Why SSH was the right pivot</h2>
+            <p class="md-typescale-body-medium">
+              HTTPS push failed because password auth is no longer supported. We
+              created an SSH key, added it to GitHub, trusted the GitHub host
+              key locally, and moved the repository remote to the SSH URL.
+            </p>
+            <md-list>
+              <md-list-item>
+                <div slot="headline">Initial remote</div>
+                <div slot="supporting-text">`https://github.com/Doolannn/Material-Design.git`</div>
+              </md-list-item>
+              <md-list-item>
+                <div slot="headline">Working remote</div>
+                <div slot="supporting-text">`git@github.com:Doolannn/Material-Design.git`</div>
+              </md-list-item>
+            </md-list>
+          </md-outlined-card>
+
+          <md-outlined-card class="panel-card">
+            <h2 class="md-typescale-headline-small">Why this matters for Figma later</h2>
+            <p class="md-typescale-body-medium">
+              A GitHub-backed component inventory makes the repository the single
+              implementation source. That means your future Figma connection can
+              point to real components and stories instead of a duplicated design-only catalog.
+            </p>
+            <div class="choice-row">
+              <md-radio checked name="source-of-truth"></md-radio>
+              <span class="md-typescale-body-medium">GitHub repo as source of truth</span>
+            </div>
+            <div class="choice-row">
+              <md-radio name="source-of-truth"></md-radio>
+              <span class="md-typescale-body-medium">Duplicate visual inventory outside the repo</span>
+            </div>
+          </md-outlined-card>
+
+          <md-outlined-card class="panel-card">
+            <h2 class="md-typescale-headline-small">Connection architecture</h2>
+            <div class="architecture-stack">
+              <div class="architecture-node">
+                <span class="architecture-node__title">Local workspace</span>
+                <span class="architecture-node__body">Git repo, branch state, staged changes</span>
+              </div>
+              <div class="architecture-arrow">↓</div>
+              <div class="architecture-node">
+                <span class="architecture-node__title">GitHub remote</span>
+                <span class="architecture-node__body">SSH remote, trusted host, merged main history</span>
+              </div>
+              <div class="architecture-arrow">↓</div>
+              <div class="architecture-node">
+                <span class="architecture-node__title">Design workflow</span>
+                <span class="architecture-node__body">Live component page, future Figma Code Connect handoff</span>
+              </div>
+            </div>
+          </md-outlined-card>
+
+          <md-outlined-card class="panel-card">
+            <h2 class="md-typescale-headline-small">What made this usable</h2>
+            <md-list>
+              <md-list-item>
+                <div slot="headline">Remote corrected</div>
+                <div slot="supporting-text">The repo was attached to a real GitHub origin.</div>
+              </md-list-item>
+              <md-list-item>
+                <div slot="headline">Authentication stabilized</div>
+                <div slot="supporting-text">SSH replaced broken HTTPS push authentication.</div>
+              </md-list-item>
+              <md-list-item>
+                <div slot="headline">History reconciled</div>
+                <div slot="supporting-text">Remote commits were merged so local and GitHub stayed aligned.</div>
+              </md-list-item>
+              <md-list-item>
+                <div slot="headline">Pages published</div>
+                <div slot="supporting-text">Repo-backed mockups and library views could be committed and pushed.</div>
+              </md-list-item>
+            </md-list>
+          </md-outlined-card>
+        </div>
+      </section>
+
+      <section id="steps-panel" class="content-panel reveal">
+        <div class="steps-grid">
+          <md-elevated-card class="step-card">
+            <span class="step-index">01</span>
+            <h3 class="md-typescale-title-large">Verified the local repository</h3>
+            <p class="md-typescale-body-medium">The workspace already had `.git`, but no remote was configured yet.</p>
+          </md-elevated-card>
+          <md-elevated-card class="step-card">
+            <span class="step-index">02</span>
+            <h3 class="md-typescale-title-large">Attached `origin`</h3>
+            <p class="md-typescale-body-medium">This created the direct path from the local workspace to the GitHub repository.</p>
+          </md-elevated-card>
+          <md-elevated-card class="step-card">
+            <span class="step-index">03</span>
+            <h3 class="md-typescale-title-large">Switched to SSH</h3>
+            <p class="md-typescale-body-medium">HTTPS failed, so SSH became the durable authentication route.</p>
+          </md-elevated-card>
+          <md-elevated-card class="step-card">
+            <span class="step-index">04</span>
+            <h3 class="md-typescale-title-large">Created and registered a key</h3>
+            <p class="md-typescale-body-medium">The public key was added to GitHub so pushes could authenticate cleanly.</p>
+          </md-elevated-card>
+          <md-elevated-card class="step-card">
+            <span class="step-index">05</span>
+            <h3 class="md-typescale-title-large">Trusted GitHub’s host key</h3>
+            <p class="md-typescale-body-medium">This resolved SSH host verification on the machine.</p>
+          </md-elevated-card>
+          <md-elevated-card class="step-card">
+            <span class="step-index">06</span>
+            <h3 class="md-typescale-title-large">Fetched and merged remote history</h3>
+            <p class="md-typescale-body-medium">The repo already had existing commits, so histories had to be reconciled.</p>
+          </md-elevated-card>
+          <md-elevated-card class="step-card">
+            <span class="step-index">07</span>
+            <h3 class="md-typescale-title-large">Pushed back to `main`</h3>
+            <p class="md-typescale-body-medium">From there, repo-backed pages and component previews could be published and reviewed.</p>
+          </md-elevated-card>
+        </div>
+      </section>
+
+      <section id="components-panel" class="content-panel reveal">
+        <div class="panel-grid">
+          <md-outlined-card class="panel-card">
+            <h2 class="md-typescale-headline-small">Existing repo components used on this page</h2>
+            <md-chip-set>
+              <md-suggestion-chip label="Buttons"></md-suggestion-chip>
+              <md-suggestion-chip label="Cards"></md-suggestion-chip>
+              <md-suggestion-chip label="Checkbox"></md-suggestion-chip>
+              <md-suggestion-chip label="Switch"></md-suggestion-chip>
+              <md-suggestion-chip label="Text field"></md-suggestion-chip>
+              <md-suggestion-chip label="Slider"></md-suggestion-chip>
+              <md-suggestion-chip label="Progress"></md-suggestion-chip>
+              <md-suggestion-chip label="List"></md-suggestion-chip>
+              <md-suggestion-chip label="Tabs"></md-suggestion-chip>
+              <md-suggestion-chip label="Dialog"></md-suggestion-chip>
+              <md-suggestion-chip label="FAB"></md-suggestion-chip>
+              <md-suggestion-chip label="Icon button"></md-suggestion-chip>
+              <md-suggestion-chip label="Menu"></md-suggestion-chip>
+              <md-suggestion-chip label="Select"></md-suggestion-chip>
+            </md-chip-set>
+          </md-outlined-card>
+
+          <md-outlined-card class="panel-card">
+            <h2 class="md-typescale-headline-small">Component control tray</h2>
+            <div class="control-tray">
+              <md-fab aria-label="Primary action">
+                <md-icon slot="icon">rocket_launch</md-icon>
+              </md-fab>
+              <md-filled-icon-button id="menu-anchor" aria-label="Open menu">
+                <md-icon>more_horiz</md-icon>
+              </md-filled-icon-button>
+              <md-outlined-select label="Next workflow step">
+                <md-select-option value="catalog" selected>
+                  <div slot="headline">Review repo-backed library</div>
+                </md-select-option>
+                <md-select-option value="figma">
+                  <div slot="headline">Connect Figma Code Connect</div>
+                </md-select-option>
+                <md-select-option value="handoff">
+                  <div slot="headline">Push coordinated updates</div>
+                </md-select-option>
+              </md-outlined-select>
+            </div>
+          </md-outlined-card>
+
+          <md-outlined-card class="panel-card">
+            <h2 class="md-typescale-headline-small">Why this page matters</h2>
+            <p class="md-typescale-body-medium">
+              It turns a technical repo-connection sequence into something a
+              design or product stakeholder can actually review. That makes it a
+              better bridge into the GitHub-to-Figma conversation.
+            </p>
+            <md-linear-progress value="0.78" buffer="1"></md-linear-progress>
+          </md-outlined-card>
+
+          <md-outlined-card class="panel-card">
+            <h2 class="md-typescale-headline-small">Single-source rule</h2>
+            <p class="md-typescale-body-medium">
+              This page uses the repo’s existing Material Web components and
+              points back to the repo-backed library page, so the explanation and
+              the implementation story stay connected.
+            </p>
+            <div class="hero-actions">
+              <md-filled-tonal-button href="./catalog/_dev/about/component-library/">
+                Open live library
+              </md-filled-tonal-button>
+              <md-outlined-button href="https://github.com/Doolannn/Material-Design" target="_blank">
+                Open GitHub
+              </md-outlined-button>
+            </div>
+          </md-outlined-card>
+        </div>
+      </section>
+    </main>
+
+    <md-menu id="summary-menu" anchor="menu-anchor">
+      <md-menu-item>
+        <div slot="headline">Remote configured</div>
+      </md-menu-item>
+      <md-menu-item>
+        <div slot="headline">SSH authenticated</div>
+      </md-menu-item>
+      <md-menu-item>
+        <div slot="headline">Branch pushed to GitHub</div>
+      </md-menu-item>
+    </md-menu>
+
+    <md-dialog id="summary-dialog">
+      <div slot="headline">Connection summary</div>
+      <form slot="content" id="dialog-form" method="dialog">
+        <p class="md-typescale-body-medium">
+          The local workspace was connected to GitHub by adding `origin`,
+          switching to SSH, trusting GitHub’s host key, merging remote history,
+          and pushing the resulting `main` branch back to the repository.
+        </p>
+      </form>
+      <div slot="actions">
+        <md-text-button form="dialog-form" value="close">Close</md-text-button>
+        <md-filled-button href="./catalog/_dev/about/component-library/">
+          Open repo-backed library
+        </md-filled-button>
+      </div>
+    </md-dialog>
+  </body>
+</html>

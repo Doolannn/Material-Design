@@ -22,6 +22,6 @@
     "strict": true,
     "strictNullChecks": false,
     "target": "es2021",
-    "types": ["lit", "jasmine"]
+    "types": ["lit", "jasmine", "@figma/code-connect/figma-types"]
   }
 }
